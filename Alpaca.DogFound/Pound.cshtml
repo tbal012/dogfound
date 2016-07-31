@@ -1,0 +1,139 @@
+﻿@using Newtonsoft.Json;
+@{
+    if (IsPost)
+    {
+        var qFilter = Request["find"];
+        if (qFilter != null)
+        {
+            Response.Redirect("~/Pound.cshtml?find=" + qFilter);
+        }
+    }
+
+    var xCounter = 0;
+
+    //IEnumerable<dynamic> AnimalList = null;
+    dynamic AnimalList = null;
+
+    var apiKEY = "32BB345E5579C994D4A2556E217886DCF2E78BF9DB275B7C7F18";
+
+    var client = new WebClient();
+    client.Headers.Add("UserAuthToken", apiKEY);
+
+    var findSearch = Request["find"];
+
+    if (!String.IsNullOrEmpty(findSearch))
+    {
+        var json = client.DownloadString("https://services.qldc.govt.nz/api/data/govhack/Dogs/impound?s=" + findSearch);
+        AnimalList = Json.Decode(json);
+        AnimalList = JsonConvert.DeserializeObject(json);
+    }
+    else if (findSearch != null)
+    {
+        var json = client.DownloadString("https://services.qldc.govt.nz/api/data/govhack/Dogs/impound");
+        AnimalList = Json.Decode(json);
+        AnimalList = JsonConvert.DeserializeObject(json);
+        //AnimalList = "";
+    }
+    else
+    {
+        AnimalList = "";
+    }
+
+    Page.Title = "Dog Found";
+    Layout = "~/_SiteLayout2.cshtml";
+}
+
+<div class="content-grid mdl-grid">
+    <h2>Search for dogs currently impounded</h2>
+    <form id="searchform" method="post" action="~/Pound.cshtml">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input mdl-js-textfield" type="text" id="find" name="find" />
+            <label class="mdl-textfield__label" for="find">Search Tag No, Dog Name</label>
+        </div>
+
+    </form>
+</div>
+
+
+@if (findSearch != null)
+{
+    if (AnimalList != null)
+    {
+        <div class="mdl-grid content-grid">
+
+            @foreach (var ani in AnimalList)
+            {
+
+                <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+                    @*<div class="mdl-card__title">
+
+                        </div>*@
+
+                    <div class="mdl-card__supporting-text">
+                        <h1 class="mdl-card__title-text">@ani.ANIMAL_NAME</h1>
+                        <ul class="mdl-list">
+                            <li class="mdl-list__item">
+                                <span class="mdl-list__item-primary-content">
+                                    Impounded on: @ani.DATE_COMMENCED
+                                </span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <span class="mdl-list__item-primary-content">
+                                    Note: @ani.ANIMAL_CLASS
+                                </span>
+                            </li>
+                            <li class="mdl-list__item">
+                                <span class="mdl-list__item-primary-content">
+                                    Tag #: @ani.ANIMAL_CTR
+                                </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button class="btnMyDog mdl-button mdl-button--icon mdl-button--accent"><i class="material-icons">phone</i></button>
+                    </div>
+                </div>
+
+            }
+        </div>
+    }
+}
+
+<div class="mdl-grid content-grid">
+    <a href="~/Pound.cshtml?find=" class="mdl-button mdl-button--accent">View All</a>
+</div>
+
+<dialog class="mdl-dialog">
+    <h4 class="mdl-dialog__title">Contact Dog Pound</h4>
+    <div class="mdl-dialog__content">
+        If this is your dog please contact the pound on 03 123 4567
+    </div>
+    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+        <button type="button" class="mdl-button close">Close</button>
+    </div>
+</dialog>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#find").focus();
+    });
+</script>
+<script>
+
+
+    var dialog = document.querySelector('dialog');
+    var showDialogButton = document.querySelector('.btnMyDog');
+    if (!dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+    }
+    showDialogButton.addEventListener('click', function () {
+        dialog.showModal();
+    });
+    dialog.querySelector('.close').addEventListener('click', function () {
+        dialog.close();
+    });
+</script>

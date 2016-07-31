@@ -1,0 +1,25 @@
+﻿@using System.Web.Optimization;
+@{
+WebSecurity.InitializeDatabaseConnection("AdminDB", "UserProfile", "UserId", "Email", autoCreateTables: true);
+}
+@{
+    var bundles = BundleTable.Bundles;
+
+    bundles.Add(new ScriptBundle("~/scripts/jquery").Include(
+                    "~/Assets/Scripts/jquery-{version}.js"
+                ));
+
+    bundles.Add(new ScriptBundle("~/scripts/modernizr").Include(
+                    "~/Assets/Scripts/modernizr-*"
+                ));
+
+    bundles.Add(new ScriptBundle("~/scripts/bootstrap").Include(
+                    "~/Assets/Scripts/bootstrap.js",
+                    "~/Assets/Scripts/respond.js"
+                ));
+
+    bundles.Add(new StyleBundle("~/Styles/cssMain").Include(
+                    "~/Assets/Styles/bootstrap.css",
+                    "~/Assets/Styles/site.css"
+                ));
+}

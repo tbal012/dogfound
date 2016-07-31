@@ -1,0 +1,188 @@
+﻿@using Newtonsoft.Json;
+@{
+    if (IsPost)
+    {
+        var qFilter = Request["find"];
+        if (qFilter != null)
+        {
+            Response.Redirect("~/Found.cshtml?find=" + qFilter);
+        }
+    }
+
+    //Enable Caching!!!!!
+
+    var xCounter = 0;
+    //IEnumerable<dynamic> AnimalList = null;
+    dynamic AnimalList = null;
+
+    //var data = "";
+
+    var apiKEY = "32BB345E5579C994D4A2556E217886DCF2E78BF9DB275B7C7F18";
+
+    //IEnumerable<dynamic> data = null;
+
+    var findSearch = Request["find"];
+    //findSearch = "";
+    if (findSearch != null)
+    {
+        var client = new WebClient();
+        client.Headers.Add("UserAuthToken", apiKEY);
+        var json = client.DownloadString("https://services.qldc.govt.nz/api/data/govhack/Dogs?s=" + findSearch);
+        //var json = client.DownloadString("https://services.qldc.govt.nz/api/data/govhack/Dogs");
+        //AnimalList = Json.Decode(json);
+        //var jsonx = JsonConvert.DeserializeObject(json);
+        AnimalList = Json.Decode(json);
+    }
+
+    Page.Title = "Dog Found";
+    Layout = "~/_SiteLayout2.cshtml";
+}
+
+<div id="searchBox" class="content-grid mdl-grid">
+    <form id="searchform" method="post" action="~/Found.cshtml">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input mdl-js-textfield" type="text" id="find" name="find" />
+            <label class="mdl-textfield__label" for="find">Enter Tag No, Type</label>
+        </div>
+    </form>
+</div>
+
+
+@if (findSearch != null)
+{
+    if (AnimalList != null)
+    {
+        <div id="dogResults" class="mdl-grid content-grid">
+            @foreach (var ani in AnimalList)
+            {
+
+            <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-shadow--2dp">
+                @*<div class="mdl-card__title">
+
+                    </div>*@
+
+                <div class="mdl-card__supporting-text">
+                    <h1 class="mdl-card__title-text">@ani.animal_name</h1>
+                    <ul class="mdl-list">
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                @ani.dogdescription
+                            </span>
+                        </li>
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                @ani.tag
+                            </span>
+                        </li>
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                @ani.gender
+                            </span>
+                        </li>
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                @ani.description
+                            </span>
+                        </li>
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                @ani.Locality_Name
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <button id="btnFound" class="btnFound mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="button">
+                        I've found this dog
+                    </button>
+                </div>
+            </div>
+
+
+
+            }
+        </div>
+
+    }
+}
+
+<dialog class="mdl-dialog">
+    <h4 class="mdl-dialog__title">Found dog information?</h4>
+    <div class="mdl-dialog__content">
+        <form id="foundForm" method="post" action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input mdl-js-textfield" type="text" id="yourname" name="yourname" />
+                <label class="mdl-textfield__label" for="find">Your name</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input mdl-js-textfield" type="text" id="email" name="email" />
+                <label class="mdl-textfield__label" for="find">Email</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input mdl-js-textfield" type="text" id="phone" name="phone" />
+                <label class="mdl-textfield__label" for="find">Phone</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <textarea class="mdl-textfield__input" type="text" rows="1" id="where"></textarea>
+                <label class="mdl-textfield__label" for="where">Where did you find this dog</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <textarea class="mdl-textfield__input" type="text" rows="1" maxrows="10"
+                          id="notes"></textarea>
+                <label class="mdl-textfield__label" for="notes">Notes (dogs condition/behaviour)</label>
+            </div>
+        </form>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button id="submit" type="button" class="mdl-button mdl-button--accent">Submit</button>
+        <button type="button" class="mdl-button close">Cancel</button>
+    </div>
+</dialog>
+
+
+<div id="foundCardThanks" class="content-grid mdl-grid" style="display:none;">
+    <div class="mdl-card mdl-shadow--6dp">
+        <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+            <h2 class="mdl-card__title-text">Found Dog Details</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Thank you. The details of the found dog have been received. Local dog handlers have been notified.
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+            $(document).ready(function () {
+                $("#find").focus();
+            });
+</script>
+<script>
+            $(document).ready(function () {
+
+                $("#submit").on('click', function () {
+                    $('#dogResults').hide();
+                    $('#searchBox').hide();
+                    
+                    $('#foundCardThanks').show();
+                    var dialog = document.querySelector('dialog');
+                    dialog.close();
+                });
+
+            });
+
+            var dialog = document.querySelector('dialog');
+            var showDialogButton = document.querySelector('.btnFound');
+            if (!dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
+            }
+            if (showDialogButton) {
+                showDialogButton.addEventListener('click', function () {
+                    dialog.showModal();
+                });
+            }
+            dialog.querySelector('.close').addEventListener('click', function () {
+                dialog.close();
+            });
+</script>

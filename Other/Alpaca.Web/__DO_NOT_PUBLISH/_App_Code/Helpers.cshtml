@@ -1,0 +1,33 @@
+﻿@using System.Xml.Linq;
+@using System.Net;
+
+@functions{
+    public static bool isValidIP(string ip)
+    {
+        IPAddress ot;
+        bool valid = false;
+        if (string.IsNullOrEmpty(ip)){
+            valid = false;
+        }
+        else{
+            valid = IPAddress.TryParse(ip, out ot);
+        }
+        return valid;
+    }
+}
+
+@functions{
+    public static bool CreateSitemap()
+    {
+        bool createdOK = false;
+
+        return createdOK;
+    }
+}
+
+@functions{
+  public static Uri GetSiteUrl(string url = "~/") {
+    url = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute(url);
+    return new Uri(url);
+  }
+}

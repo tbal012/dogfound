@@ -1,0 +1,8 @@
+﻿@{
+if(Request["Id"].IsInt()){
+  var db = Database.Open("Blog");
+  var selectQueryString = "SELECT Postid, Picture from POSTS WHERE PostID = @0";
+  var UploadedPicture = db.QuerySingle(selectQueryString, Request["Id"].AsInt());
+  Response.BinaryWrite((byte[])UploadedPicture.Picture);
+}
+}

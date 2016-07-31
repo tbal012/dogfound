@@ -1,0 +1,491 @@
+/* Global Styles */
+html, body {
+  height:100%;
+}
+
+body {
+  padding-top: 60px; /* body padding for fixed top nav */
+  background-color: rgb(246, 246, 246);
+}
+
+.MainBG{
+    background-color:white;
+    height:100%;
+}
+
+.img-home-portfolio,
+.img-customer,
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.tab-pane {
+  margin-top: 15px;
+}
+
+
+/* Page Sections */
+.section,
+.section-colored {
+  padding: 50px 0;
+}
+
+.section-colored {
+  background-color: #e1e1e1; /* change this to change the background color of a colored section */
+}
+
+.sidebar {
+  margin-top: 40px;
+}
+
+.sidebar ul {
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #cccccc;
+}
+
+
+/* Half Page Height Carousel Customization */
+.carousel {
+  height: 50%;
+}
+
+.item,
+.active,
+.carousel-inner {
+  height: 100%;
+}
+
+.fill {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Social Icons Styles */
+.list-social-icons {
+  margin-bottom: 45px;
+}
+
+.tooltip-social a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.facebook-link a:hover {
+  color: #3b5998;
+}
+
+.linkedin-link a:hover {
+  color: #007fb1;
+}
+
+.twitter-link a:hover {
+  color: #39a9e0;
+}
+
+.google-plus-link a:hover {
+  color: #d14836;
+}
+
+/* Service Page Styles */
+.service-icon {
+  font-size: 50px;
+}
+
+/* 404 Page Styles */
+.error-404 {
+  font-size: 8em;
+}
+
+/* Pricing Page Styles */
+.price {
+  font-size: 4em;
+}
+
+.price-cents {
+  vertical-align: super;
+  font-size: 50%;
+}
+
+.price-month {
+  font-size: 35%;
+  font-style: italic;
+}
+
+/* Footer Styles */
+footer {
+  margin: 50px 0;
+}
+
+.navbar-fixed-top {
+  /*background-color: #0054a3;*/  
+}
+
+/* SUPER Custom Styles */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight:lighter;
+    line-height: 1;
+}
+
+nav a {
+    color: #bababa;
+    color: white;
+    text-decoration: none;
+    text-align: left;
+    line-height: 22px;
+    text-transform: uppercase;
+}
+
+.navbar-fixed-top {
+    top: 0;
+    z-index: 9000;
+    background-color: #222;
+    /*background-color: #0054a3;*/
+    width: 100%;
+    max-width: 100%;    
+}
+
+.navbar-nav li {
+    margin-top: 21px;
+    padding-left: 10px;
+    text-align: left;
+    width: 140px;
+    text-align: center;
+    float: left;
+    font-size: 16px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #ec2125;
+    text-decoration: none;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: rgba(0, 0, 0, 0.00);
+}
+
+.navbar-inverse {
+    border-color:rgba(0, 0, 0, 0.00);
+}
+
+.navbar-nav > li > a{
+    color: white;
+    padding: 0;
+}
+
+.greyHeadTable { background-color: #39a9e0;}
+.table thead a {color: white; text-decoration: none;}
+
+    .HomeBoxLinks { background-color: #27a9e3; text-align: center; margin-top: 20px;}
+    .HomeBoxLinks a{ color: #fff; text-decoration: none; padding: 30px 0;}
+    .HomeBoxLinks a h2{ padding: 30px 0;}
+
+.errorList { color: #ec2125; font-size: 12px; padding-bottom: 20px;}
+
+        .inset {
+          padding: 0 20px 20px 20px;
+        }
+
+/*Search Boxes*/
+        #searchBox {
+            margin: 15px auto 0 auto;
+            /*width: 95%;*/
+            background-color: #f0f0f0;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .searchinput {
+            margin: 0;
+            margin-right: 2px;
+            padding: 0;
+            border: 0;
+            float: left;
+            width: 85%;
+            height: 32px;
+            padding: 12px 0 0 10px;
+            background: none;
+            font-size: 16px;
+        }
+        .btnSearch {
+            padding: 0;
+            border: 0;
+            margin: 0;
+            line-height: 42px;
+            display: inline-block;
+            overflow: hidden;
+            width: 42px;
+            height: 42px;
+            background: url("Images/core-sprites-base.png") no-repeat top;
+            background-position: -78px -92px;
+        }
+
+    #searchBox input[type="text"], #searchBox input[type="text"]:focus, #searchBox input[type="text"]:hover { 
+        background: none; border: none; -webkit-box-shadow:none; -moz-box-shadow:none; box-shadow:none;}
+
+    #searchform:focus, #searchform:hover, #searchform:active{ 
+        border-color: #ec2125;
+        box-shadow: 0 1px 1px #ec2125 inset, 0 0 8px #ec2125;
+        outline: 0 none;}
+
+    textarea:focus, input[type="text"]:focus, input[type="search"]:focus {   
+        border-color: rgba(126, 239, 104, 0.8);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+        outline: 0 none;}
+
+/*Stat Zones*/
+        .boxIT {
+            background-color: rgba(0, 0, 0, 0.05);
+            min-height: 400px;
+            width: 100%;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        }
+        .boxhead {
+            text-transform: uppercase;
+            font-size: 16px; padding: 20px 20px;
+            color: #999999;
+            margin-top: 20px;
+            border-bottom: 2px solid #39a9e0;
+        }
+        .boxhead span{
+            text-transform: lowercase;
+        }
+        .boxBody {
+            padding: 5px 20px;
+        }
+
+        .statsArea { text-align: center; margin: 20px auto;}
+        .statsNumber { font-size: 32px;}
+        .statsTitle { }
+
+.breadcrumb { margin-bottom: 0;}
+
+/*Pagination*/
+/*.pagination {
+  margin: 20px 0;
+  display: block;
+}
+
+.pagination ul {
+  display: inline-block;
+  *display: inline;
+  margin-bottom: 0;
+  margin-left: 0;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  *zoom: 1;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.pagination ul > li {
+  display: inline;
+}
+
+.pagination ul > li > a,
+.pagination ul > li > span {
+  float: left;
+  padding: 4px 12px;
+  line-height: 20px;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-left-width: 0;
+}
+
+.pagination ul > li > a:hover,
+.pagination ul > .active > a,
+.pagination ul > .active > span {
+  background-color: #f5f5f5;
+}
+
+.pagination ul > .active > a,
+.pagination ul > .active > span {
+  color: #999999;
+  cursor: default;
+}
+
+.pagination ul > .disabled > span,
+.pagination ul > .disabled > a,
+.pagination ul > .disabled > a:hover {
+  color: #999999;
+  cursor: default;
+  background-color: transparent;
+}
+
+.pagination ul > li:first-child > a,
+.pagination ul > li:first-child > span {
+  border-left-width: 1px;
+  -webkit-border-bottom-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+          border-top-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-topleft: 4px;
+}
+
+.pagination ul > li:last-child > a,
+.pagination ul > li:last-child > span {
+  -webkit-border-top-right-radius: 4px;
+          border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-bottomright: 4px;
+}
+
+.pagination-centered {
+  text-align: center;
+}
+
+.pagination-right {
+  text-align: right;
+}
+
+.pagination-large ul > li > a,
+.pagination-large ul > li > span {
+  padding: 11px 19px;
+  font-size: 17.5px;
+}
+
+.pagination-large ul > li:first-child > a,
+.pagination-large ul > li:first-child > span {
+  -webkit-border-bottom-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+  -webkit-border-top-left-radius: 6px;
+          border-top-left-radius: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  -moz-border-radius-topleft: 6px;
+}
+
+.pagination-large ul > li:last-child > a,
+.pagination-large ul > li:last-child > span {
+  -webkit-border-top-right-radius: 6px;
+          border-top-right-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-bottomright: 6px;
+}
+
+.pagination-mini ul > li:first-child > a,
+.pagination-small ul > li:first-child > a,
+.pagination-mini ul > li:first-child > span,
+.pagination-small ul > li:first-child > span {
+  -webkit-border-bottom-left-radius: 3px;
+          border-bottom-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+          border-top-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-topleft: 3px;
+}
+
+.pagination-mini ul > li:last-child > a,
+.pagination-small ul > li:last-child > a,
+.pagination-mini ul > li:last-child > span,
+.pagination-small ul > li:last-child > span {
+  -webkit-border-top-right-radius: 3px;
+          border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+}
+
+.pagination-small ul > li > a,
+.pagination-small ul > li > span {
+  padding: 2px 10px;
+  font-size: 11.9px;
+}
+
+.pagination-mini ul > li > a,
+.pagination-mini ul > li > span {
+  padding: 1px 6px;
+  font-size: 10.5px;
+}
+
+.pager {
+  margin: 20px 0;
+  text-align: center;
+  list-style: none;
+  *zoom: 1;
+}
+
+.pager:before,
+.pager:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.pager:after {
+  clear: both;
+}
+
+.pager li {
+  display: inline;
+}
+
+.pager li > a,
+.pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+}
+
+.pager li > a:hover {
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > span {
+  color: #999999;
+  cursor: default;
+  background-color: #fff;
+}*/
+
+
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+
+    .carousel {
+        height: 70%; /* increases the carousel height so it looks good on phones */
+    }
+    .navbar-nav li {
+        padding-left: 20px;
+        text-align: left;
+        width: 100%;
+    }
+    .navbar-toggle {
+        margin-top: 14px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}

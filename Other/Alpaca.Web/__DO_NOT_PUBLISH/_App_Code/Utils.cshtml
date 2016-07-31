@@ -1,0 +1,16 @@
+﻿@helper LogActions(string action, string dets, string status){
+
+    var xSQL = "INSERT INTO AUDITLOG (CurrentUser, Action, Details, Status, TimeStamp) VALUES (@0, @1, @2, @3, @4)";
+
+    String User = WebCache.Get("UsernameFull");
+    String Details = dets;
+    String Action = action;
+    String Status = status;
+    DateTime TimeStamp = DateTime.Now;
+
+    var db = Database.Open("DEV3E");
+
+        db.Execute(xSQL, User, Action, Details, Status, TimeStamp);
+
+}
+

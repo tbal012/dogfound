@@ -1,0 +1,88 @@
+﻿@using System.Web.Optimization;
+<!doctype html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.teal-red.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+    @Scripts.Render("~/scripts/jquery")
+
+    <style>
+        .content-grid {
+            max-width: 960px;
+        }
+        body {
+          display: flex;
+          background-image: url(Assets/Images/dogs.jpg);
+          background-repeat:none;
+          background-size: cover;
+        }
+
+        .file_input_div {
+          margin: auto;
+          width: 250px;
+          height: 40px;
+        }
+
+        .file_input {
+          float: left;
+        }
+
+        #file_input_text_div {
+          width: 200px;
+          margin-top: -8px;
+          margin-left: 5px;
+        }
+
+        .none {
+          display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title"><a href="~/" class=""><img src="~/Assets/Images/DogControlR-Logo.png" alt="Dog Found Logo"></a></span>
+
+                @*<div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="#">Help</a>
+                    <a class="mdl-navigation__link" href="#">About</a>
+                    <a class="mdl-navigation__link" href="#">Contact</a>
+                </nav>*@
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title"><a href="~/" class="">Dog Found</a></span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="~/Found.cshtml">I've found a dog</a>
+                <a class="mdl-navigation__link" href="~/Lost.cshtml">I've lost my dog</a>
+                <a class="mdl-navigation__link" href="~/Pound.cshtml">Pound Check</a>
+            </nav>
+        </div>
+
+
+        <main class="mdl-layout__content">
+            @RenderBody()
+        </main>
+    </div>
+
+ 
+    @*    <style>
+        .navbar-brand {
+            color: #fff !important;
+        }
+
+        a.navbar-brand:hover {
+            color: #999999 !important;
+        }
+    </style>
+    @RenderSection("FooterExtra", false)*@
+</body>
+</html>
